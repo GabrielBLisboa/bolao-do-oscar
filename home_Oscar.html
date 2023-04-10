@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> <!--configuração da página - essa seção não será exibida-->
+    <meta charset="UTF-8"> <!-- explicita o conjunto de caracteres-->
+        <meta name="description" content="Faça suas apostas de quem vencerá as categorias do Oscar 2023!">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- -->
+    <link rel="stylesheet" href="style.css"> <!-- importa o estilo do arquivo-->
+    <meta name="author" content="Gabriel Lisboa">
+    <link rel="icon" type="image/x-icon" href=".imgs/porco_tela">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Bolão do Oscar 2023 - Página Principal </title> <!-- texto que aparece na aba do navegador -->
+        <!-- <link href="css/style.css" rel="stylesheet"> outra maneira de importar o stylesheet? -->
+
+        <script type="text/javascript">
+            var db = openDatabase('Banco_Oscar');
+        
+            function salvar(){
+                var nome = document.getElementById('nome').value;
+                var filme = document.getElementById('melhor_filme').value;
+                var direcao = document.getElementById('direcao').value;
+                var ator = document.getElementById('ator').value;
+                var atriz = document.getElementById('atriz').value;
+
+            db.transaction(function(armazenar){
+                armazenar.executeSql("INSERT INTO Categorias (nome, filme, direcao, ator, atriz) VALUES (?,?,?,?,?)", [nome, filme, direcao, ator, atriz]);
+            });
+            }
+        </script>  
+</head>
+ 
+
+<body>
+    <header>
+        <img src="./imgs/oscar_logo.png" alt="Oscar_Logo" style="height: 40px; margin-left: 20px;">
+        <h1 style="margin-left: 20%;"> Bolão do Oscar 2023</h1>
+    </header>
+<br>
+    <main>
+        <div class="texto">
+            <p>
+                Esta página deixa você salvar suas apostas para o <b>Oscar 2023</b> nas principais categorias<br>
+                Será possível ver as apostas de outras pessoas e no final um placar de quem acertou mais. <br>
+            </p>
+        </div>
+
+<br>
+
+<!-- MELHOR FILME -->
+
+        <div class="titulo">
+            <h2>Melhor Filme</h2>
+            <hr>
+        </div>
+        <img src="./imgs/filmes.png" alt="Filmes" style="margin-left: 6%;">
+        <div class="container">
+            <table class="wikitable">
+                <tbody>
+                    <tr >
+                        <td>
+                            <ul>
+                                <li><i>Nada de Novo no Front </i></li>
+                                <li> <i></i> Avatar: O Caminho da Água</li>
+                                <li> <i>Os Banshees de Inisherin</i></li>
+                                <li><i>Elvis</i></li>
+                                <li><i>Tudo em Todo o Lugar ao Mesmo Tempo</i></li>
+                                <li><i>Os Fabelmans</i></li>
+                                <li><i>Tár</i></li>
+                                <li><i>Top Gun: Maverick</i></li>
+                                <li><i>Triângulo da Tristeza</i></li>
+                                <li><i>Entre Mulheres</i></li>
+                            </ul>  
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <form onsubmit="salvar()">
+                <h5>Quem vai <span style="font-weight: bold; text-transform: uppercase;">ganhar</span>?</h5>
+
+                <input type="radio" id="Nada" name="melhor_filme" value="Nada de Novo no Front">
+                <label for="Nada">Nada de Novo no Front</label><br>
+                
+                <input type="radio" id="Avatar" name="melhor_filme" value="Avatar O Caminho da Agua">
+                <label for="Avatar">Avatar: O Caminho da Água</label><br>
+                
+                <input type="radio" id="Banshees" name="melhor_filme" value="Os Banshees de Inisherin">
+                <label for="Banshees">Os Banshees de Inisherin</label><br>
+                
+                <input type="radio" id="Elvis" name="melhor_filme" value="Elvis">
+                <label for="Elvis">Elvis</label><br>
+
+                <input type="radio" id="Tudo" name="melhor_filme" value="Tudo em Todo o Lugar ao Mesmo Tempo">
+                <label for="Tudo">Tudo em Todo o Lugar ao Mesmo Tempo</label><br>
+                
+                <input type="radio" id="Fabelmans" name="melhor_filme" value="Os Fabelmans">
+                <label for="Fabelmans">Os Fabelmans</label> <br>
+                
+                <input type="radio" id="Tar" name="melhor_filme" value="Tar">
+                <label for="Tar">Tár</label><br>
+                
+                <input type="radio" id="Top" name="melhor_filme" value="Top Gun Maverick">
+                <label for="Top">Top Gun: Maverick</label><br>
+                
+                <input type="radio" id="Entre" name="melhor_filme" value="Entre Mulheres">
+                <label for="Entre">Entre Mulheres</label> <br>
+            </form>
+
+            <!-- <form class="formulario">
+                <h5>E o seu <span style="font-weight: bold; text-transform: uppercase;">Favorito</span>?</h5>
+                <input type="radio" id="Nada" name="melhor_filme" value="Nada de Novo no Front">
+                <label for="Nada">Nada de Novo no Front</label><br>
+                
+                <input type="radio" id="Avatar" name="melhor_filme" value="Avatar O Caminho da Agua">
+                <label for="Avatar">Avatar: O Caminho da Água</label><br>
+                
+                <input type="radio" id="Banshees" name="melhor_filme" value="Os Banshees de Inisherin">
+                <label for="Banshees">Os Banshees de Inisherin</label><br>
+                
+                <input type="radio" id="Elvis" name="melhor_filme" value="Elvis">
+                <label for="Elvis">Elvis</label><br>
+
+                <input type="radio" id="Tudo" name="melhor_filme" value="Tudo em Todo o Lugar ao Mesmo Tempo">
+                <label for="Tudo">Tudo em Todo o Lugar ao Mesmo Tempo</label><br>
+                
+                <input type="radio" id="Fabelmans" name="melhor_filme" value="Os Fabelmans">
+                <label for="Fabelmans">Os Fabelmans</label> <br>
+                
+                <input type="radio" id="Tar" name="melhor_filme" value="Tar">
+                <label for="Tar">Tár</label><br>
+                
+                <input type="radio" id="Top" name="melhor_filme" value="Top Gun Maverick">
+                <label for="Top">Top Gun: Maverick</label><br>
+                
+                <input type="radio" id="Entre" name="melhor_filme" value="Entre Mulheres">
+                <label for="Entre">Entre Mulheres</label> <br>
+            </form> -->
+        </div>
+
+<br>
+
+<!-- MELHOR DIREÇÃO -->
+
+        <div class="titulo">
+            <h2 style="display: flex;">Melhor Direção</h2>
+            <hr>
+        </div>
+            
+        <div style="display:flex">
+            <div style="margin-left: 20%;">
+                <img src="./imgs/daniels.png" alt="" class="image">
+                <img src="./imgs/todd.png" alt="" class="image">
+                <img src="./imgs/martin.png" alt="" class="image">
+                <img src="./imgs/ruben.png" alt="" class="image">
+                <img src="./imgs/steven.png" alt="" class="image">
+            </div>
+        </div>
+
+        <div class="container">
+        <table class="wikitable">
+            <tbody>
+                <tr>
+                    <td>
+                        <ul style="line-height: 150%;" >
+                            <li>Daniel Kwan e Daniel Schienert - <i>Tudo em Todo o Lugar ao Mesmo Tempo</i> </li>
+                            <li>Todd Field - <i>Tár</i></li>
+                            <li>Martin McDonagh - <i>The Banshees of Inisherin</i></li>
+                            <li>Ruben Östlund - <i>Triangle of Sadness</i></li>
+                            <li>Steven Spielberg - <i>The Fabelmans</i></li>
+                        </ul>
+                    </td>    
+                </tr>
+            </tbody>
+        </table>
+
+        <form class="formulario" onsubmit="salvar()">
+
+                <h5>Quem vai <span style="font-weight: bold; text-transform: uppercase;">ganhar</span>?</h5>
+                
+                <input type="radio" id="Kwan_Schienert" name="direcao" value="Daniels">
+                <label for="Kwan_Schienert">Daniel Kwan e Daniel Schienert</label><br>
+
+                <input type="radio" id="Field" name="direcao" value="Todd Field">
+                <label for="Field">Todd Field</label> <br>
+
+                <input type="radio" id="McDonagh" name="direcao" value="Martin McDonagh">
+                <label for="McDonagh">Martin McDonagh</label><br>
+
+                <input type="radio" id="Ostlund" name="direcao" value="Ruben Ostlund">
+                <label for="Ostlund">Ruben Östlund</label> <br>
+
+                <input type="radio" id="Spielberg" name="direcao" value="Steven Spielberg">
+                <label for="Spielberg">Steven Spielberg</label><br>
+        </form>
+
+        <!-- <form class="formulario">
+            <h5>E o seu <span style="font-weight: bold; text-transform: uppercase;">Favorito</span>?</h5>
+            
+            <input type="radio" id="Kwan_Schienert" name="direcao" value="Daniels">
+            <label for="Kwan_Schienert">Daniel Kwan e Daniel Schienert</label><br>
+
+            <input type="radio" id="Field" name="direcao" value="Todd Field">
+            <label for="Field">Todd Field</label> <br>
+
+            <input type="radio" id="McDonagh" name="direcao" value="Martin McDonagh">
+            <label for="McDonagh">Martin McDonagh</label><br>
+
+            <input type="radio" id="Ostlund" name="direcao" value="Ruben Ostlund">
+            <label for="Ostlund">Ruben Östlund</label> <br>
+
+            <input type="radio" id="Spielberg" name="direcao" value="Steven Spielberg">
+            <label for="Spielberg">Steven Spielberg</label><br>
+        </form> -->
+        </div>
+
+        
+<!-- MELHOR ATOR -->
+        
+        <div class="titulo">
+            <h2 style="display: flex;">Melhor Ator</h2>
+            <hr>
+        </div>
+            
+        <div style="display:flex">
+            <div style="margin-left: 20%;">
+                <img src="./imgs/butler.jpg" alt="" class="image">
+                <img src="./imgs/mescal.jpg" alt="" class="image">
+                <img src="./imgs/farrel.jpg" alt="" class="image">
+                <img src="./imgs/fraser.jpg" alt="" class="image">
+                <img src="./imgs/nighy.jpg" alt="" class="image">
+            </div>
+
+        </div>
+
+        <div class="container">
+            <table class="wikitable">
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul style="line-height: 150%;" >
+                                <li>Austin Butler - <i>Elvis</i> </li>
+                                <li>Paul Mescal - <i> Aftersun</i></li>
+                                <li>Colin Farrell  - <i>The Banshees of Inisherin</i></li>
+                                <li>Brendan Fraser - <i> The Whale </i></li>
+                                <li>Bill Nighy - <i> Living</i></li>
+                            </ul>
+                        </td>    
+                    </tr>
+                </tbody>
+            </table>
+        <form class="formulario" onsubmit="salvar()">
+
+                <h5>Quem vai <span style="font-weight: bold; text-transform: uppercase;">ganhar</span>?</h5>
+                
+                <input type="radio" id="Butler" name="ator" value="Austin Butler">
+                <label for="Butler">Austin Butler</label><br>
+
+                <input type="radio" id="Mescal" name="ator" value="Paul Mescal">
+                <label for="Mescal">Paul Mescal</label> <br>
+
+                <input type="radio" id="Farrell" name="ator" value="Colin Farrell">
+                <label for="Colin Farrell">Colin Farrell</label><br>
+
+                <input type="radio" id="Fraser" name="ator" value="Brendan Fraser">
+                <label for="Fraser">Brendan Fraser</label> <br>
+
+                <input type="radio" id="Nighy" name="ator" value="Bill Nighy">
+                <label for="Nighy">Bill Nighy</label><br>
+        </form>
+
+        <!-- <form class="formulario">
+            <h5>E o seu <span style="font-weight: bold; text-transform: uppercase;">Favorito</span>?</h5>
+                
+            <input type="radio" id="Butler" name="ator" value="Austin Butler">
+            <label for="Butler">Austin Butler</label><br>
+
+            <input type="radio" id="Mescal" name="ator" value="Paul Mescal">
+            <label for="Mescal">Paul Mescal</label> <br>
+
+            <input type="radio" id="Farrell" name="ator" value="Colin Farrell">
+            <label for="Colin Farrell">Colin Farrell</label><br>
+
+            <input type="radio" id="Fraser" name="ator" value="Brendan Fraser">
+            <label for="Fraser">Brendan Fraser</label> <br>
+
+            <input type="radio" id="Nighy" name="ator" value="Bill Nighy">
+            <label for="Nighy">Bill Nighy</label><br>
+        </form> -->
+    </div>
+<br>
+
+<!-- MELHOR ATRIZ -->
+
+        <div class="titulo">
+            <h2 style="display: flex;">Melhor Atriz</h2>
+            <hr>
+        </div>
+            
+        <div style="display:flex">
+            <div style="margin-left: 20%;">
+                <img src="./imgs/ana.jpg" alt="" class="image">
+                <img src="./imgs/andrea.jpg" alt="" class="image">
+                <img src="./imgs/yeoh.jpeg" alt="" class="image">
+                <img src="./imgs/williams.jpg" alt="" class="image">
+                <img src="./imgs/cate.jpeg" alt="" class="image">
+            </div>
+        </div>
+
+        <div class="container">
+            <table class="wikitable">
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul style="line-height: 150%;" >
+                                <li>Ana de Armas - <i>Blonde</i> </li>
+                                <li>Andrea Riseborough - <i> To Leslie</i></li>
+                                <li>Michelle Yeoh  - <i>Tudo em Todo o Lugar ao Mesmo Tempo</i></li>
+                                <li>Michelle Williams - <i> Os Fablemans</i></li>
+                                <li>Cate Blanchett - <i> Tár </i></li>
+                            </ul>
+                        </td>    
+                    </tr>
+                </tbody>
+            </table>
+        <form onsubmit="salvar()" class="formulario">
+
+                <h5>Quem vai <span style="font-weight: bold; text-transform: uppercase;">ganhar</span>?</h5>
+                
+                <input type="radio" id="Ana" name="atriz" value="Ana de Armas">
+                <label for="Ana">Ana de Armas</label><br>
+
+                <input type="radio" id="Andrea" name="atriz" value="Andrea Riseborough">
+                <label for="Andrea">Andrea Riseborough</label> <br>
+
+                <input type="radio" id="Yeoh" name="atriz" value="Michelle Yeoh">
+                <label for="Yeoh">Michelle Yeoh</label><br>
+
+                <input type="radio" id="Williams" name="atriz" value="Michelle Williams">
+                <label for="Williams">Michelle Williams</label> <br>
+
+                <input type="radio" id="Cate" name="atriz" value="Cate Blanchett">
+                <label for="Cate">Cate Blanchett</label><br>
+        </form>
+
+        <!-- <form method="post" action="http://localhost:3000/users" class="formulario">
+            <h5>E o seu <span style="font-weight: bold; text-transform: uppercase;">Favorito</span>?</h5>
+                
+            <input type="radio" id="Ana" name="atriz" value="Ana de Armas">
+                <label for="Ana">Ana de Armas</label><br>
+
+                <input type="radio" id="Andrea" name="atriz" value="Andrea Riseborough">
+                <label for="Andrea">Andrea Riseborough</label> <br>
+
+                <input type="radio" id="Yeoh" name="atriz" value="Michelle Yeoh">
+                <label for="Yeoh">Michelle Yeoh</label><br>
+
+                <input type="radio" id="Williams" name="atriz" value="Michelle Williams">
+                <label for="Williams">Michelle Williams</label> <br>
+
+                <input type="radio" id="Cate" name="atriz" value="Cate Blanchett">
+                <label for="Cate">Cate Blanchett</label><br>
+        </form> -->
+        </div>
+
+<br>
+<br>
+
+        <div class="submeter">
+            <form onsubmit="salvar()" style="display: inline">
+                        <label for="">Enviar respostas:</label>
+                        <input type="text" name="name" placeholder="Seu Nome" style="margin-left: 1%;">
+            </form>
+            <input type="submit" value="Enviar">
+        </div>
+        
+<br>   
+<br>
+
+
+        <div  style="font-size: 15px;">
+            <center><p> Para mais informações acesse:</p>
+                <a href="https://www.termometrooscar.com/" target="_blank"> 
+                    <img src="./imgs/icone_Oscar.png" alt="" style="border-radius: 10px; width: 2.5%;"> </a>
+                <p>Termômetro do Oscar</p>
+            </center>
+        </div>
+
+    </main>
+
+    <br>
+
+<footer style="color: aliceblue;">
+    <hr>
+    <center>
+        &copy; Gabriel Lisboa - 2023 
+    </center>
+</footer>
+
+</body>
+</html>
